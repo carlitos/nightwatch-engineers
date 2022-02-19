@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: recorrido-api
+
+test:
+  <<: *default
+  database: recorrido-api_test
+
+production:
+  <<: *default
+  database: recorrido-api_production
+  username: recorrido-api
+  password: <%= ENV['VACUNAR_APP_DATABASE_PASSWORD'] %>
